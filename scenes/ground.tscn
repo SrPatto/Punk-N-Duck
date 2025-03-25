@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://co0gsp45db47q"]
+
+[ext_resource type="Texture2D" uid="uid://dy4wahkaqifu3" path="res://assets/prototype/solid.png" id="1_pybca"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mi8v4"]
+
+[node name="Ground" type="StaticBody2D"]
+collision_layer = 32
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 0.5)
+texture = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30.5)
+shape = SubResource("WorldBoundaryShape2D_mi8v4")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjyaiyam0yh0k"]
+
+[ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_ntv5y"]
+[ext_resource type="PackedScene" uid="uid://gqn812ljmf58" path="res://scenes/platform.tscn" id="2_bafcs"]
+
+[node name="Module2" type="Node2D"]
+script = ExtResource("1_ntv5y")
+
+[node name="Platform" parent="." instance=ExtResource("2_bafcs")]
+position = Vector2(0, 32)
+scale = Vector2(5, 1)
+
+[node name="Platform2" parent="." instance=ExtResource("2_bafcs")]
+position = Vector2(-1, -64)
+scale = Vector2(5, 1)

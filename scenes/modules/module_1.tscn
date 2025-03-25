@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjpww7pa23e34"]
+
+[ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_a5bfb"]
+[ext_resource type="PackedScene" uid="uid://gqn812ljmf58" path="res://scenes/platform.tscn" id="2_saa41"]
+
+[node name="Module1" type="Node2D"]
+script = ExtResource("1_a5bfb")
+
+[node name="Platform" parent="." instance=ExtResource("2_saa41")]
+position = Vector2(0, 32)
+scale = Vector2(5, 1)

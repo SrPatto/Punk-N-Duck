@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://gqn812ljmf58"]
+
+[ext_resource type="Texture2D" uid="uid://1p5pm5r4k8tu" path="res://assets/prototype/platform.png" id="1_ba0x2"]
+[ext_resource type="Script" uid="uid://ceb1bvs3ep5jo" path="res://scripts/platform.gd" id="1_nlgqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlgqw"]
+size = Vector2(128, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_507ja"]
+size = Vector2(128, 64)
+
+[node name="Platform" type="StaticBody2D"]
+collision_layer = 16
+script = ExtResource("1_nlgqw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ba0x2")
+offset = Vector2(0, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+shape = SubResource("RectangleShape2D_nlgqw")
+one_way_collision = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_507ja")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
