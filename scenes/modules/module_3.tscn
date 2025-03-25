@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://udf1xe81qns7"]
+
+[ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_avjsk"]
+[ext_resource type="PackedScene" uid="uid://chvf3s7mkyumg" path="res://scenes/obstacle.tscn" id="2_o0uuu"]
+
+[node name="Module3" type="Node2D"]
+script = ExtResource("1_avjsk")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_o0uuu")]
+position = Vector2(0, 84)

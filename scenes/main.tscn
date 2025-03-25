@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhyj30fyf5qxt"]
+[gd_scene load_steps=10 format=3 uid="uid://bhyj30fyf5qxt"]
 
 [ext_resource type="PackedScene" uid="uid://co0gsp45db47q" path="res://scenes/ground.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://doqscv4apgb0u" path="res://scripts/level.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cjpww7pa23e34" path="res://scenes/modules/module_1.tscn" id="2_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://btpo27t6jnr41" path="res://scenes/player.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cmwsw6qdu66vd" path="res://scenes/modules/module_0.tscn" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://cjyaiyam0yh0k" path="res://scenes/modules/module_2.tscn" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://udf1xe81qns7" path="res://scenes/modules/module_3.tscn" id="5_85g3d"]
+[ext_resource type="PackedScene" uid="uid://pchatj6emxr2" path="res://scenes/modules/module_4.tscn" id="6_choun"]
+[ext_resource type="PackedScene" uid="uid://dmhmhas560yrj" path="res://scenes/modules/module_5.tscn" id="7_ya4ey"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,7 +17,11 @@
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(0, -1)
 script = ExtResource("1_sugp2")
-modules = Array[PackedScene]([ExtResource("2_jyhfs"), ExtResource("3_tbgi4")])
+modules = Array[PackedScene]([ExtResource("2_tefeu"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("5_85g3d"), ExtResource("6_choun"), ExtResource("7_ya4ey")])
+
+[node name="Roof" parent="." instance=ExtResource("1_0wfyh")]
+position = Vector2(0, -212)
+rotation = -3.14159
 
 [node name="Ground" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(0, 150)

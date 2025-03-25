@@ -44,8 +44,3 @@ jump_up={
 2d_physics/layer_4="Projectile"
 2d_physics/layer_5="Platform"
 2d_physics/layer_6="Ground"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
