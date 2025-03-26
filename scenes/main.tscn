@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://udf1xe81qns7" path="res://scenes/modules/module_3.tscn" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://pchatj6emxr2" path="res://scenes/modules/module_4.tscn" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://dmhmhas560yrj" path="res://scenes/modules/module_5.tscn" id="7_ya4ey"]
-[ext_resource type="PackedScene" uid="uid://bwu2h5yx1dich" path="res://scenes/enemy_a.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://dldg1bk1e8cf6" path="res://scenes/enemy_spawner.tscn" id="10_eb6dy"]
 
 [node name="Main" type="Node2D"]
 
@@ -30,5 +30,4 @@ position = Vector2(0, 150)
 [node name="Player" parent="." instance=ExtResource("2_sugp2")]
 position = Vector2(0, 84)
 
-[node name="EnemyA" parent="." instance=ExtResource("10_choun")]
-position = Vector2(-400, 84)
+[node name="EnemySpawner" parent="." instance=ExtResource("10_eb6dy")]

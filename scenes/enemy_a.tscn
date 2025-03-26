@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwu2h5yx1dich"]
+[gd_scene load_steps=9 format=3 uid="uid://bwu2h5yx1dich"]
 
-[ext_resource type="Script" uid="uid://cfcodws1sihvg" path="res://scripts/enemy.gd" id="1_8fi7l"]
+[ext_resource type="Script" uid="uid://cfcodws1sihvg" path="res://scripts/Enemies/enemy.gd" id="1_8fi7l"]
 [ext_resource type="Texture2D" uid="uid://dwpt8roeal5bp" path="res://assets/prototype/icon.svg" id="1_o8m2v"]
 [ext_resource type="Script" uid="uid://chou2jadrxdra" path="res://scripts/FiniteStateMachines/StateMachine.gd" id="3_b34wx"]
 [ext_resource type="Script" uid="uid://biwefmye0wy81" path="res://scripts/Enemies/Enemy_A/EnemySpawn_State.gd" id="4_yj7xe"]
 [ext_resource type="Script" uid="uid://bv3y0yx6dbn50" path="res://scripts/Enemies/Enemy_A/EnemyChase_State.gd" id="5_ik5em"]
-[ext_resource type="Script" uid="uid://dxvdal0nxjvry" path="res://scenes/EnemyThrow_State.gd" id="6_pid25"]
+[ext_resource type="Script" uid="uid://dxvdal0nxjvry" path="res://scripts/Enemies/Enemy_A/EnemyThrow_State.gd" id="6_pid25"]
+[ext_resource type="Script" uid="uid://cnwac8oqg0l5" path="res://scripts/Enemies/Enemy_A/EnemyDespawn_State.gd" id="7_5puuv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fi7l"]
 size = Vector2(64, 64)
@@ -54,3 +55,4 @@ script = ExtResource("5_ik5em")
 script = ExtResource("6_pid25")
 
 [node name="Despawn" type="Node" parent="StateMachine"]
+script = ExtResource("7_5puuv")
