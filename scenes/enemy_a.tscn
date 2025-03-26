@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwu2h5yx1dich"]
+
+[ext_resource type="Script" uid="uid://cfcodws1sihvg" path="res://scripts/enemy.gd" id="1_8fi7l"]
+[ext_resource type="Texture2D" uid="uid://dwpt8roeal5bp" path="res://assets/prototype/icon.svg" id="1_o8m2v"]
+[ext_resource type="Script" uid="uid://chou2jadrxdra" path="res://scripts/FiniteStateMachines/StateMachine.gd" id="3_b34wx"]
+[ext_resource type="Script" uid="uid://biwefmye0wy81" path="res://scripts/Enemies/Enemy_A/EnemySpawn_State.gd" id="4_yj7xe"]
+[ext_resource type="Script" uid="uid://bv3y0yx6dbn50" path="res://scripts/Enemies/Enemy_A/EnemyChase_State.gd" id="5_ik5em"]
+[ext_resource type="Script" uid="uid://dxvdal0nxjvry" path="res://scenes/EnemyThrow_State.gd" id="6_pid25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fi7l"]
+size = Vector2(64, 64)
+
+[node name="EnemyA" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 51
+script = ExtResource("1_8fi7l")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -63.0
+offset_right = 23.0
+offset_bottom = -40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_o8m2v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8fi7l")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(600, 0)
+collision_mask = 3
+
+[node name="ShootingPoint" type="Marker2D" parent="."]
+position = Vector2(44, 0)
+
+[node name="Timer_reload" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_b34wx")
+initial_state = NodePath("Spawn")
+
+[node name="Spawn" type="Node" parent="StateMachine"]
+script = ExtResource("4_yj7xe")
+
+[node name="Chase" type="Node" parent="StateMachine"]
+script = ExtResource("5_ik5em")
+
+[node name="Throw" type="Node" parent="StateMachine"]
+script = ExtResource("6_pid25")
+
+[node name="Despawn" type="Node" parent="StateMachine"]
