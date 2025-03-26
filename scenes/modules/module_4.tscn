@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://pchatj6emxr2"]
+[gd_scene load_steps=5 format=3 uid="uid://pchatj6emxr2"]
 
 [ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_cxlqn"]
 [ext_resource type="PackedScene" uid="uid://gqn812ljmf58" path="res://scenes/platform.tscn" id="2_2o5ho"]
 [ext_resource type="PackedScene" uid="uid://chvf3s7mkyumg" path="res://scenes/obstacle.tscn" id="3_2o5ho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o5ho"]
 
 [node name="Module4" type="Node2D"]
 script = ExtResource("1_cxlqn")
@@ -13,3 +15,21 @@ scale = Vector2(5, 1)
 
 [node name="Obstacle" parent="." instance=ExtResource("3_2o5ho")]
 position = Vector2(0, -23)
+
+[node name="NoPlatformFlag2" type="Area2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-310, -64)
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoPlatformFlag2"]
+shape = SubResource("RectangleShape2D_2o5ho")
+
+[node name="PlatformFlag2" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-310, 32)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformFlag2"]
+shape = SubResource("RectangleShape2D_2o5ho")

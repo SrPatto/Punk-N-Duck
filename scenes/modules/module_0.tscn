@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmwsw6qdu66vd"]
+[gd_scene load_steps=3 format=3 uid="uid://cmwsw6qdu66vd"]
 
 [ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_7rl2q"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt0q3"]
+
 [node name="Module0" type="Node2D"]
 script = ExtResource("1_7rl2q")
+
+[node name="NoPlatformFlag" type="Area2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-310, -64)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoPlatformFlag"]
+shape = SubResource("RectangleShape2D_rt0q3")
+
+[node name="NoPlatformFlag2" type="Area2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-310, 32)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoPlatformFlag2"]
+shape = SubResource("RectangleShape2D_rt0q3")

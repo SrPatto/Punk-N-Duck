@@ -34,6 +34,7 @@ spawns = Array[ExtResource("2_xl0gr")]([SubResource("Resource_31irv"), SubResour
 spawn_points = [NodePath("Top_SpawnPoint"), NodePath("Mid_SpawnPoint"), NodePath("Bot_SpawnPoint")]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [node name="Top_SpawnPoint" type="Marker2D" parent="."]
@@ -44,5 +45,22 @@ position = Vector2(-400, -18)
 
 [node name="Bot_SpawnPoint" type="Marker2D" parent="."]
 position = Vector2(-400, 84)
+
+[node name="PlatformSensors" type="Node2D" parent="."]
+position = Vector2(-320, 0)
+
+[node name="Top_sensor" type="RayCast2D" parent="PlatformSensors"]
+position = Vector2(0, -64)
+target_position = Vector2(320, 0)
+collision_mask = 768
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Mid_sensor" type="RayCast2D" parent="PlatformSensors"]
+position = Vector2(0, 32)
+target_position = Vector2(320, 0)
+collision_mask = 768
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

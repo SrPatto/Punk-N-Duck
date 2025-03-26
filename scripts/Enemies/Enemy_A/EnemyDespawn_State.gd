@@ -26,7 +26,7 @@ func Physics_Update(_delta: float):
 	
 func move_to_gamePosition():
 	var tween = create_tween()
-	tween.tween_property(enemy_a, "position", gameOff_position, 2)
+	tween.tween_property(enemy_a, "position", gameOff_position, 1)
 	tween.tween_callback(func (): 
 		Global.enemy_spawner.spawns[enemy_a.spawnPosition].canSpawn = true
-		queue_free())
+		enemy_a.queue_free())

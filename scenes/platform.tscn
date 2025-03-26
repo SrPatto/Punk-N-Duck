@@ -9,7 +9,7 @@ size = Vector2(128, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_507ja"]
 size = Vector2(128, 64)
 
-[node name="Platform" type="StaticBody2D"]
+[node name="Platform" type="StaticBody2D" groups=["platforms"]]
 collision_layer = 16
 script = ExtResource("1_nlgqw")
 

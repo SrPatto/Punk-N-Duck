@@ -1,5 +1,6 @@
 extends State
 
+@onready var enemy_a = $"../.."
 @onready var ray_cast_2d = $"../../RayCast2D"
 @onready var timer_reload = $"../../Timer_reload"
 @onready var label = $"../../Label"
@@ -20,6 +21,8 @@ func Update(_delta: float):
 			Transitioned.emit(self, "throw")
 		elif collision.is_in_group("obstacles"):
 			Transitioned.emit(self, "despawn")
+	if !Global.enemy_spawner.existPlatform(enemy_a.spawnPosition):
+		Transitioned.emit(self, "despawn")
 	pass
 	
 func Physics_Update(_delta: float):

@@ -42,9 +42,12 @@ jump_up={
 
 [layer_names]
 
+2d_render/layer_9="NoPlatFlag"
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Obstacle"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Projectile"
 2d_physics/layer_5="Platform"
 2d_physics/layer_6="Ground"
+2d_physics/layer_9="NoPlatformFlag"
+2d_physics/layer_10="PlatformFlag"
