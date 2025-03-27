@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 @onready var ray_cast_platform = $RayCast_Platform
 @onready var ray_cast_death_sensor = $RayCast_DeathSensor
+@onready var timer_recover: Timer = $TimerRecover
 
-const RUN_SPEED = 300.0
 const JUMP_VELOCITY = -500.0
+var stumble_hits = 0
+const INITIAL_POSITION = 0
+const STUMBLE_POSITION_1 = -120
+const STUMBLE_POSITION_2 = -220
 
 func _ready():
 	Global.player = self
@@ -32,5 +36,32 @@ func _process(delta):
 		if collision.is_in_group("obstacles"):
 			death()
 
+func recover():
+	if stumble_hits > 0:
+		stumble_hits -= 1
+		var tween = create_tween()
+		match stumble_hits:
+			0:
+				tween.tween_property(self, "position:x", INITIAL_POSITION, 1)
+			1:
+				tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
+				tween.tween_callback(func (): timer_recover.start())
+
+func stumble():
+	if stumble_hits < 2:
+		stumble_hits += 1
+		var tween = create_tween()
+		match stumble_hits:
+			1:
+				tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
+				tween.tween_callback(func (): timer_recover.start())
+				
+			2:
+				tween.tween_property(self, "position:x", STUMBLE_POSITION_2, 1)
+				tween.tween_callback(func (): timer_recover.start())
+
 func death():
-	get_tree().reload_current_scene()
+	get_tree().call_deferred("reload_current_scene")
+
+func _on_timer_recover_timeout() -> void:
+	recover()

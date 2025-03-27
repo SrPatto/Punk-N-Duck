@@ -24,3 +24,9 @@ collision_mask = 16
 [node name="RayCast_DeathSensor" type="RayCast2D" parent="."]
 target_position = Vector2(50, 0)
 collision_mask = 6
+
+[node name="TimerRecover" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="TimerRecover" to="." method="_on_timer_recover_timeout"]
