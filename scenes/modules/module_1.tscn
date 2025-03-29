@@ -9,12 +9,12 @@
 script = ExtResource("1_a5bfb")
 
 [node name="Platform" parent="." instance=ExtResource("2_saa41")]
-position = Vector2(0, 32)
-scale = Vector2(5, 1)
+position = Vector2(0, 40)
+sprite_platformType = "shelve"
 
 [node name="NoPlatformFlag" type="Area2D" parent="."]
 modulate = Color(0, 0, 1, 1)
-position = Vector2(-310, -64)
+position = Vector2(-254, -64)
 collision_layer = 256
 collision_mask = 256
 
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_saa41")
 
 [node name="PlatformFlag" type="Area2D" parent="."]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(-310, 32)
+position = Vector2(-254, 32)
 collision_layer = 512
 collision_mask = 0
 

@@ -3,7 +3,7 @@ extends Node2D
 @export var modules: Array[PackedScene] = []
 var amount = 10
 var randomNumber = RandomNumberGenerator.new()
-var offset = 640
+var offset = 528
 var initObstacles = 0
 
 func _ready() -> void:
