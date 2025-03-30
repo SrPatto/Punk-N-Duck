@@ -4,14 +4,15 @@ extends Node2D
 var amount = 10
 var randomNumber = RandomNumberGenerator.new()
 var offset = 528
-var initObstacles = 0
+var initModules = 0
 
 func _ready() -> void:
 	for n in amount:
 		spawn_module(n*offset)
 
 func spawn_module(n):
-	if initObstacles > 2:
+	if initModules > 2:
+		Global.enemy_spawner.activateSpawner = true
 		randomNumber.randomize()
 		var num = randomNumber.randi_range(0, modules.size()-1)
 		var instance = modules[num].instantiate()
@@ -21,4 +22,4 @@ func spawn_module(n):
 		var instance = modules[0].instantiate()
 		instance.position.x = n
 		add_child(instance)
-		initObstacles += 1
+		initModules += 1

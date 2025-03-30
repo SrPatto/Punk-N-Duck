@@ -9,8 +9,11 @@ var time = 0
 var existPlatform_0
 var existPlatform_1
 
+var activateSpawner: bool
+
 func _ready():
 	Global.enemy_spawner = self
+	activateSpawner = false
 	reset_spawners()
 
 func _process(delta):
@@ -19,19 +22,19 @@ func _process(delta):
 func _on_timer_timeout() -> void:
 	var enemy_spawns = spawns
 	var enemySpawn_info = enemy_spawns.pick_random()
-	
-	if enemySpawn_info.canSpawn && existPlatform(enemySpawn_info.spawnPoint):
-		if enemySpawn_info.spawn_delay_counter < enemySpawn_info.enemy_spawn_delay:
-			enemySpawn_info.spawn_delay_counter += 1
-		else:
-			enemySpawn_info.spawn_delay_counter = 0
-			var new_enemy = load(str(enemySpawn_info.enemy.resource_path))
-			var spawn_point = get_spawnPoint(enemySpawn_info)
-			var enemy_spawn = new_enemy.instantiate()
-			enemy_spawn.global_position = spawn_point.global_position
-			enemy_spawn.spawnPosition = enemySpawn_info.spawnPoint
-			add_child(enemy_spawn)
-			enemySpawn_info.canSpawn = false
+	if activateSpawner:
+		if enemySpawn_info.canSpawn && existPlatform(enemySpawn_info.spawnPoint):
+			if enemySpawn_info.spawn_delay_counter < enemySpawn_info.enemy_spawn_delay:
+				enemySpawn_info.spawn_delay_counter += 1
+			else:
+				enemySpawn_info.spawn_delay_counter = 0
+				var new_enemy = load(str(enemySpawn_info.enemy.resource_path))
+				var spawn_point = get_spawnPoint(enemySpawn_info)
+				var enemy_spawn = new_enemy.instantiate()
+				enemy_spawn.global_position = spawn_point.global_position
+				enemy_spawn.spawnPosition = enemySpawn_info.spawnPoint
+				add_child(enemy_spawn)
+				enemySpawn_info.canSpawn = false
 
 func existPlatform(spawn_platform):
 	match spawn_platform:
@@ -58,7 +61,7 @@ func platform_sensor():
 			existPlatform_1 = false
 
 func get_spawnPoint(enemySpawn_info):
-	return spawn_points.get(enemySpawn_info.spawnPoint)
+	return spawn_points[enemySpawn_info.spawnPoint]
 
 func reset_spawners():
 	for i in spawns:
