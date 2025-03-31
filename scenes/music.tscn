@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4nlhw31ow2fy"]
+
+[ext_resource type="Script" uid="uid://nfqfxk771fwu" path="res://scripts/music.gd" id="1_05ggv"]
+[ext_resource type="AudioStream" uid="uid://vyu7sgsrt37y" path="res://assets/music/Menú.wav" id="1_ibx2e"]
+[ext_resource type="AudioStream" uid="uid://bsgr6lhlnckqt" path="res://assets/music/Gameplay.wav" id="2_qnihg"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ejojg"]
+clip_count = 2
+clip_0/name = &"Menú"
+clip_0/stream = ExtResource("1_ibx2e")
+clip_0/auto_advance = 0
+clip_1/name = &"Gameplay"
+clip_1/stream = ExtResource("2_qnihg")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 5.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = SubResource("AudioStreamInteractive_ejojg")
+autoplay = true
+script = ExtResource("1_05ggv")

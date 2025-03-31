@@ -3,7 +3,8 @@ extends Node2D
 var score
 var gameRunning
 
-const SPEED_MODIFIER = 100
+const SPEED_MODIFIER = 50  
+
 const MAX_SPEED = 700
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 	if gameRunning:
 		if Global.speed < MAX_SPEED:
 			Global.speed = Global.START_SPEED + score / SPEED_MODIFIER
-			score += (Global.speed / 300)
+		score += (Global.speed / 300)
 		show_score()
 	else:
 		if Input.is_action_pressed("start_game"):
