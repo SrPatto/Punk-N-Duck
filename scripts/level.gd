@@ -12,7 +12,6 @@ func _ready() -> void:
 
 func spawn_module(n):
 	if initModules > 2:
-		Global.enemy_spawner.activateSpawner = true
 		randomNumber.randomize()
 		var num = randomNumber.randi_range(0, modules.size()-1)
 		var instance = modules[num].instantiate()

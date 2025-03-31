@@ -1,18 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://chvf3s7mkyumg"]
 
-[ext_resource type="Texture2D" uid="uid://rhuwmghyhevu" path="res://assets/prototype/crate.png" id="1_7ukg5"]
+[ext_resource type="Script" uid="uid://dmmj3ngwc2nav" path="res://scripts/obstacle.gd" id="1_drdry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drdry"]
-size = Vector2(78, 78)
+size = Vector2(62, 72)
 
 [node name="Obstacle" type="StaticBody2D" groups=["obstacles"]]
 collision_layer = 2
 collision_mask = 49
+script = ExtResource("1_drdry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+texture_filter = 1
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_7ukg5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_drdry")

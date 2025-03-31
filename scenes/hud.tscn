@@ -9,7 +9,7 @@ offset_right = 84.0
 offset_bottom = 26.0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 32
-text = "SCORE: "
+text = "SCORE: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -22,7 +22,7 @@ offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 32
-text = "High Score: "
+text = "High Score: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true

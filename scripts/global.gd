@@ -3,4 +3,5 @@ extends Node
 var player
 var enemy_spawner 
 
-var level_speed = 300
+const START_SPEED = 300
+var speed

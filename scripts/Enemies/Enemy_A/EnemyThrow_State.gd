@@ -9,15 +9,14 @@ const PROJECTILE_SCENE = preload("res://scenes/projectile.tscn")
 @onready var timer_reload = $"../../Timer_reload"
 @onready var label = $"../../Label"
 @onready var ray_cast_2d = $"../../RayCast2D"
+@onready var animated_sprite_2d = $"../../AnimatedSprite2D"
 
 var canThrow
 
 func Enter():
-	# todo: change animation throw
+	animated_sprite_2d.play("throw")
 	label.text = "throw"
 	canThrow = true
-	throw()
-	timer_reload.start()
 	pass
 	
 func Exit():
@@ -42,5 +41,8 @@ func throw():
 	var projectile = PROJECTILE_SCENE.instantiate()
 	projectile.global_position = shooting_point.global_position
 	get_tree().root.add_child(projectile)
-	canThrow = false
-	
+
+func _on_animated_sprite_2d_animation_finished():
+		throw()
+		canThrow = false
+		timer_reload.start()

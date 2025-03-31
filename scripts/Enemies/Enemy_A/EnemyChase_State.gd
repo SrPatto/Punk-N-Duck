@@ -4,10 +4,10 @@ extends State
 @onready var ray_cast_2d = $"../../RayCast2D"
 @onready var timer_reload = $"../../Timer_reload"
 @onready var label = $"../../Label"
-
+@onready var animated_sprite_2d = $"../../AnimatedSprite2D"
 
 func Enter():
-	# todo: change animation
+	animated_sprite_2d.play("run")
 	label.text = "chase"
 	pass
 	

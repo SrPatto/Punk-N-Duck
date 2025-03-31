@@ -2,13 +2,14 @@ extends State
 
 @onready var enemy_a = $"../.."
 @onready var label = $"../../Label"
+@onready var animated_sprite_2d = $"../../AnimatedSprite2D"
 
 const POSITION_X = -400
 var position_y = 0
 var gameOff_position 
 
 func Enter():
-	# todo: change animation run
+	animated_sprite_2d.play("run")
 	label.text = "despawn"
 	position_y = enemy_a.global_position.y
 	gameOff_position = Vector2(POSITION_X, position_y)
