@@ -18,6 +18,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += (get_gravity()*2) * delta
+		if get_parent().gameRunning:
+			animated_sprite_2d.play("jump")
+	elif get_parent().gameRunning:
+		animated_sprite_2d.play("run")
 		
 	if not get_parent().gameRunning:
 		#todo: idle animation
@@ -25,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Handle jump up.
 		if Input.is_action_just_pressed("jump_up") and is_on_floor():
+			animated_sprite_2d.play("jump")
 			velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
@@ -43,32 +48,35 @@ func _process(delta):
 			death()
 
 func recover():
-	if stumble_hits > 0:
-		stumble_hits -= 1
-		var tween = create_tween()
-		match stumble_hits:
-			0:
-				tween.tween_property(self, "position:x", INITIAL_POSITION, 1)
-			1:
-				tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
-				tween.tween_callback(func (): timer_recover.start())
+	if get_parent().gameRunning:
+		if stumble_hits > 0:
+			stumble_hits -= 1
+			var tween = create_tween()
+			match stumble_hits:
+				0:
+					tween.tween_property(self, "position:x", INITIAL_POSITION, 1)
+				1:
+					tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
+					tween.tween_callback(func (): timer_recover.start())
 
 func stumble():
-	if stumble_hits < 2:
-		stumble_hits += 1
-		var tween = create_tween()
-		match stumble_hits:
-			1:
-				tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
-				tween.tween_callback(func (): timer_recover.start())
-				
-			2:
-				tween.tween_property(self, "position:x", STUMBLE_POSITION_2, 1)
-				tween.tween_callback(func (): timer_recover.start())
+	if get_parent().gameRunning:
+		if stumble_hits < 2:
+			stumble_hits += 1
+			var tween = create_tween()
+			match stumble_hits:
+				1:
+					tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
+					tween.tween_callback(func (): timer_recover.start())
+					
+				2:
+					tween.tween_property(self, "position:x", STUMBLE_POSITION_2, 1)
+					tween.tween_callback(func (): timer_recover.start())
 
 func death():
-	#animation
-	get_parent().game_over()
+	animated_sprite_2d.play("death")
+	if animated_sprite_2d.animation_finished:
+		get_parent().game_over()
 	pass
 
 func _on_timer_recover_timeout() -> void:

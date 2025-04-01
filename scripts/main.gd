@@ -1,15 +1,17 @@
 extends Node2D
 
-var score
+var score: int
 var gameRunning
+var isGameOver
 
 const SPEED_MODIFIER = 50  
-
+const DECELERATION_RATE = 100
 const MAX_SPEED = 700
 
 func _ready() -> void:
 	score = 0
 	gameRunning = false
+	isGameOver = false
 	Global.speed = 0
 	$GameOver.hide()
 	$HUD.get_node("StartLabel").show()
@@ -24,7 +26,7 @@ func _process(delta: float) -> void:
 		score += (Global.speed / 300)
 		show_score()
 	else:
-		if Input.is_action_pressed("start_game"):
+		if Input.is_action_pressed("start_game") && !isGameOver:
 			$HUD.get_node("StartLabel").hide()
 			gameRunning = true
 			Global.speed = Global.START_SPEED
@@ -35,12 +37,17 @@ func new_game():
 	get_tree().reload_current_scene()
 
 func game_over():
+	isGameOver = true
 	check_highscore()
-	$GameOver.show()
 	Global.enemy_spawner.activateSpawner = false
-	Global.speed = 0
 	gameRunning = false
-	pass
+	deceleration()
+
+func deceleration():
+	while Global.speed > 0:
+			Global.speed = max(Global.speed - DECELERATION_RATE * get_process_delta_time(), 0)
+			await get_tree().process_frame  # Wait for the next frame
+	$GameOver.show()
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score)

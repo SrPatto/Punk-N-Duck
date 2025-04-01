@@ -1,12 +1,24 @@
 [gd_scene load_steps=22 format=3 uid="uid://bwu2h5yx1dich"]
 
-[ext_resource type="Script" uid="uid://cfcodws1sihvg" path="res://scripts/Enemies/enemy.gd" id="1_8fi7l"]
-[ext_resource type="Script" uid="uid://chou2jadrxdra" path="res://scripts/FiniteStateMachines/StateMachine.gd" id="3_b34wx"]
+[ext_resource type="Script" uid="uid://cfcodws1sihvg" path="res://scripts/Enemies/Enemy_A/enemy_a.gd" id="1_8fi7l"]
+[ext_resource type="Texture2D" uid="uid://dv5p8k6hb73ho" path="res://assets/sprites/enemies/EnemigoFull.png" id="2_jcwuj"]
 [ext_resource type="Texture2D" uid="uid://dkvtwsua2mlxj" path="res://assets/sprites/enemies/EnemigoV2.png" id="3_jcwuj"]
-[ext_resource type="Script" uid="uid://biwefmye0wy81" path="res://scripts/Enemies/Enemy_A/EnemySpawn_State.gd" id="4_yj7xe"]
-[ext_resource type="Script" uid="uid://bv3y0yx6dbn50" path="res://scripts/Enemies/Enemy_A/EnemyChase_State.gd" id="5_ik5em"]
-[ext_resource type="Script" uid="uid://dxvdal0nxjvry" path="res://scripts/Enemies/Enemy_A/EnemyThrow_State.gd" id="6_pid25"]
-[ext_resource type="Script" uid="uid://cnwac8oqg0l5" path="res://scripts/Enemies/Enemy_A/EnemyDespawn_State.gd" id="7_5puuv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fyb3"]
+atlas = ExtResource("2_jcwuj")
+region = Rect2(1344, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbidp"]
+atlas = ExtResource("2_jcwuj")
+region = Rect2(1456, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwfcb"]
+atlas = ExtResource("2_jcwuj")
+region = Rect2(1568, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxyh"]
+atlas = ExtResource("2_jcwuj")
+region = Rect2(1680, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fxpe"]
 atlas = ExtResource("3_jcwuj")
@@ -58,6 +70,23 @@ region = Rect2(1232, 0, 112, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2fyb3"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fyb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbidp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwfcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxyh")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 6.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
@@ -114,6 +143,7 @@ animations = [{
 size = Vector2(80, 96)
 
 [node name="EnemyA" type="Area2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 51
 script = ExtResource("1_8fi7l")
@@ -127,7 +157,7 @@ offset_bottom = -40.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2fyb3")
-animation = &"throw"
+animation = &"charge"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -146,21 +176,5 @@ position = Vector2(44, 0)
 wait_time = 1.5
 one_shot = true
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_b34wx")
-initial_state = NodePath("Spawn")
-
-[node name="Spawn" type="Node" parent="StateMachine"]
-script = ExtResource("4_yj7xe")
-
-[node name="Chase" type="Node" parent="StateMachine"]
-script = ExtResource("5_ik5em")
-
-[node name="Throw" type="Node" parent="StateMachine"]
-script = ExtResource("6_pid25")
-
-[node name="Despawn" type="Node" parent="StateMachine"]
-script = ExtResource("7_5puuv")
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="StateMachine/Throw" method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

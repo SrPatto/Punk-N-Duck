@@ -11,7 +11,7 @@ func _ready() -> void:
 		spawn_module(n*offset)
 
 func spawn_module(n):
-	if initModules > 2:
+	if initModules > 4:
 		randomNumber.randomize()
 		var num = randomNumber.randi_range(0, modules.size()-1)
 		var instance = modules[num].instantiate()
