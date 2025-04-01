@@ -40,7 +40,7 @@ func Physics_Update(_delta: float):
 func throw():
 	var projectile = PROJECTILE_SCENE.instantiate()
 	projectile.global_position = shooting_point.global_position
-	get_tree().root.add_child(projectile)
+	add_child(projectile)
 
 func _on_animated_sprite_2d_animation_finished():
 		throw()

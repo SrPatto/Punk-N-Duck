@@ -14,7 +14,8 @@ position = Vector2(0, 40)
 sprite_platformType = "shelve"
 
 [node name="Obstacle" parent="." instance=ExtResource("3_2o5ho")]
-position = Vector2(0, 4)
+position = Vector2(0, -16)
+sprite_ObstacleType = "C"
 
 [node name="NoPlatformFlag2" type="Area2D" parent="."]
 modulate = Color(0, 0, 1, 1)

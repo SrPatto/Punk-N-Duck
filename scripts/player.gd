@@ -39,6 +39,7 @@ func _process(delta):
 	if ray_cast_death_sensor.is_colliding():
 		var collision = ray_cast_death_sensor.get_collider()
 		if collision.is_in_group("obstacles"):
+			collision.destroy()
 			death()
 
 func recover():
@@ -66,7 +67,9 @@ func stumble():
 				tween.tween_callback(func (): timer_recover.start())
 
 func death():
-	get_tree().call_deferred("reload_current_scene")
+	#animation
+	get_parent().game_over()
+	pass
 
 func _on_timer_recover_timeout() -> void:
 	recover()

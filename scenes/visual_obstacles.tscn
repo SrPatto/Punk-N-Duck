@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgur7ub6weuhh"]
+
+[ext_resource type="Texture2D" uid="uid://2qk7ktj0tret" path="res://assets/Background/Columna.png" id="1_o3s55"]
+[ext_resource type="Script" uid="uid://dhakoucf5kbsr" path="res://scripts/visual_obstacles.gd" id="1_rqnjg"]
+
+[node name="Visual_Obstacles" type="Node2D"]
+script = ExtResource("1_rqnjg")
+
+[node name="pillar" type="Sprite2D" parent="."]
+position = Vector2(1000, 0)
+texture = ExtResource("1_o3s55")

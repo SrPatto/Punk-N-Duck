@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://bch2sh4mmt5hq"]
+[gd_scene load_steps=5 format=3 uid="uid://bch2sh4mmt5hq"]
+
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="1_xeevv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqhvx"]
+bg_color = Color(0.845397, 0.510534, 5.77569e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbwuq"]
+bg_color = Color(0.178167, 0.721369, 5.77569e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_racf3"]
+bg_color = Color(0.437137, 0.568592, 1, 1)
 
 [node name="GameOver" type="CanvasLayer"]
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xeevv")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/hover = SubResource("StyleBoxFlat_wqhvx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tbwuq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_racf3")
+text = "Restart"

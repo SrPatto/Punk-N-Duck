@@ -9,8 +9,8 @@
 script = ExtResource("1_avjsk")
 
 [node name="Obstacle" parent="." instance=ExtResource("2_o0uuu")]
-position = Vector2(0, 126)
-sprite_ObstacleType = 2
+position = Vector2(0, 108)
+sprite_ObstacleType = "A"
 
 [node name="NoPlatformFlag3" type="Area2D" parent="."]
 modulate = Color(0, 0, 1, 1)

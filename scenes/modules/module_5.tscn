@@ -18,12 +18,12 @@ position = Vector2(0, -64)
 sprite_platformType = "boxes"
 
 [node name="Obstacle" parent="." instance=ExtResource("3_apl30")]
-position = Vector2(0, -99)
-sprite_ObstacleType = 1
+position = Vector2(0, -120)
+sprite_ObstacleType = "C"
 
 [node name="Obstacle2" parent="." instance=ExtResource("3_apl30")]
-position = Vector2(0, 126)
-sprite_ObstacleType = 2
+position = Vector2(0, 108)
+sprite_ObstacleType = "A"
 
 [node name="PlatformFlag2" type="Area2D" parent="."]
 modulate = Color(0, 1, 0, 1)
