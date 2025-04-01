@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://de70wd77cod0x"]
+
+[ext_resource type="Script" uid="uid://bduipb4ug8lg" path="res://scripts/Enemies/Enemy_B/enemy_b.gd" id="1_6jsk0"]
+[ext_resource type="Texture2D" uid="uid://dwpt8roeal5bp" path="res://assets/prototype/icon.svg" id="1_f1kt5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6jsk0"]
+size = Vector2(128, 128)
+
+[node name="Enemy_B" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_6jsk0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_f1kt5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6jsk0")
+
+[node name="ThrowingPoint" type="Marker2D" parent="."]
+position = Vector2(0, 74)
+
+[node name="DropPoint_1" type="Marker2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="DropPoint_2" type="Marker2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="Timer_reload" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer_reload" to="." method="_on_timer_reload_timeout"]

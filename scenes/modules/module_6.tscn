@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp0fuf43pwquo"]
+
+[ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="1_cym6c"]
+[ext_resource type="PackedScene" uid="uid://gqn812ljmf58" path="res://scenes/platform.tscn" id="2_0v5lr"]
+[ext_resource type="PackedScene" uid="uid://de70wd77cod0x" path="res://scenes/enemy_b.tscn" id="3_0v5lr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntv5y"]
+
+[node name="Module2" type="Node2D"]
+script = ExtResource("1_cym6c")
+
+[node name="Platform" parent="." instance=ExtResource("2_0v5lr")]
+position = Vector2(0, 40)
+sprite_platformType = "shelve"
+
+[node name="Platform2" parent="." instance=ExtResource("2_0v5lr")]
+position = Vector2(0, -64)
+sprite_platformType = "boxes"
+
+[node name="Enemy_B" parent="." instance=ExtResource("3_0v5lr")]
+position = Vector2(0, -129)
+
+[node name="PlatformFlag" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-254, 32)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformFlag"]
+shape = SubResource("RectangleShape2D_ntv5y")
+
+[node name="PlatformFlag1" type="Area2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-254, -64)
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformFlag1"]
+shape = SubResource("RectangleShape2D_ntv5y")

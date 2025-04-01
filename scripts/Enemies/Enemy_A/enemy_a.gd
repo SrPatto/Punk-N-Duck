@@ -87,6 +87,7 @@ func move_to_gamePosition():
 func throw():
 	var projectile = PROJECTILE_SCENE.instantiate()
 	projectile.global_position = shooting_point.global_position
+	projectile.direction = 1
 	get_parent().add_child(projectile)
 
 func _on_body_entered(body: Node2D) -> void:
