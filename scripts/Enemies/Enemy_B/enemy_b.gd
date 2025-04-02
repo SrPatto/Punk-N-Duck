@@ -22,11 +22,8 @@ func throw():
 	var projectile = PROJECTILE_SCENE.instantiate()
 	projectile.global_position = throwing_point.global_position
 	projectile.direction = 0
-	get_parent().add_child(projectile)
-	var tween = create_tween()
-	tween.tween_property(projectile, "position", drop_point_Position, 2)
-	tween.tween_callback(func (): queue_free())
-	
+	self.add_child(projectile)
+
 
 func _on_timer_reload_timeout() -> void:
 	throw()

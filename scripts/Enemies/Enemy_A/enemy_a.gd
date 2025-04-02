@@ -41,7 +41,7 @@ func _process(delta: float):
 	if canThrow == false && current_state == Enemy_State.Throw:
 		change_state(Enemy_State.Chase)
 	
-	if !get_parent().activateSpawner:
+	if !get_parent().activateSpawner && current_state != Enemy_State.Charge:
 		change_state(Enemy_State.Despawn)
 
 func change_state(new_state: Enemy_State):

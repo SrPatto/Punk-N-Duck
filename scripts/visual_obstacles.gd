@@ -11,7 +11,6 @@ const ENEMY_INTIAL_POSITION = Vector2(200, 300)
 
 func _ready() -> void:
 	enemy_c.position = ENEMY_INTIAL_POSITION
-	timer_enemy_spawn.start()
 
 func _process(delta: float) -> void:
 	if Global.speed != 0:

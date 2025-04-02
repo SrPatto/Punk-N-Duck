@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"charge",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [],
 "loop": true,
@@ -159,6 +159,8 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2fyb3")
 animation = &"charge"
 autoplay = "run"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 1

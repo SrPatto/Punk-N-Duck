@@ -42,10 +42,10 @@ rotation = -3.14159
 [node name="Ground" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(0, 194.5)
 
-[node name="HUD" parent="." instance=ExtResource("13_a8y0u")]
+[node name="Visual_Obstacles" parent="." instance=ExtResource("16_jbj1t")]
 
 [node name="GameOver" parent="." instance=ExtResource("14_jkv2x")]
 
-[node name="Visual_Obstacles" parent="." instance=ExtResource("16_jbj1t")]
+[node name="HUD" parent="." instance=ExtResource("13_a8y0u")]
 
 [node name="Music" parent="." instance=ExtResource("14_a8y0u")]

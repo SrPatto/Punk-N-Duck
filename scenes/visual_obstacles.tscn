@@ -9,10 +9,12 @@ z_index = 4
 script = ExtResource("1_rqnjg")
 
 [node name="pillar" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1000, 0)
 texture = ExtResource("1_o3s55")
 
 [node name="enemy_c" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(200, 64)
 texture = ExtResource("3_5llv0")
 

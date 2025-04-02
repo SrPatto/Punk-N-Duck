@@ -1,7 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://btpo27t6jnr41"]
+[gd_scene load_steps=22 format=3 uid="uid://btpo27t6jnr41"]
 
 [ext_resource type="Script" uid="uid://cme4w7ierogvo" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bem3lxirm1r8w" path="res://assets/sprites/player/PersonajeFull.png" id="2_g2els"]
+[ext_resource type="Shader" uid="uid://e10onet4448c" path="res://assets/shaders/shake&flash.gdshader" id="2_qhqgy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
+resource_local_to_scene = true
+shader = ExtResource("2_qhqgy")
+shader_parameter/hit_effect = 0.0
+shader_parameter/shake_intensity = 1.0
+shader_parameter/flash_speed = 10.0
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -18,10 +27,6 @@ region = Rect2(1568, 0, 112, 112)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("2_g2els")
 region = Rect2(1680, 0, 112, 112)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("2_g2els")
-region = Rect2(896, 0, 112, 112)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("2_g2els")
@@ -93,9 +98,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjrip")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_smehm")
 }, {
 "duration": 1.0,
@@ -148,8 +150,9 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_dqkch")
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"death"
+animation = &"jump"
 autoplay = "run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -162,7 +165,7 @@ target_position = Vector2(0, 60)
 collision_mask = 16
 
 [node name="RayCast_DeathSensor" type="RayCast2D" parent="."]
-target_position = Vector2(50, 0)
+target_position = Vector2(40, 0)
 collision_mask = 6
 
 [node name="TimerRecover" type="Timer" parent="."]

@@ -6,10 +6,13 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 const JUMP_VELOCITY = -700.0
-var stumble_hits = 0
 const INITIAL_POSITION = 0
 const STUMBLE_POSITION_1 = -120
 const STUMBLE_POSITION_2 = -220
+const STUMBLE_HIT_STRENGTH = 10
+const DEATH_HIT_STRENGTH = 30
+
+var stumble_hits = 0
 
 func _ready():
 	Global.player = self
@@ -63,21 +66,30 @@ func stumble():
 	if get_parent().gameRunning:
 		if stumble_hits < 2:
 			stumble_hits += 1
+			get_parent().apply_shake(STUMBLE_HIT_STRENGTH)
+			hit_flash(1)
 			var tween = create_tween()
 			match stumble_hits:
 				1:
 					tween.tween_property(self, "position:x", STUMBLE_POSITION_1, 1)
-					tween.tween_callback(func (): timer_recover.start())
-					
+					tween.tween_callback(func (): 
+						timer_recover.start()
+						hit_flash(0))
 				2:
 					tween.tween_property(self, "position:x", STUMBLE_POSITION_2, 1)
-					tween.tween_callback(func (): timer_recover.start())
+					tween.tween_callback(func (): 
+						timer_recover.start()
+						hit_flash(0))
 
 func death():
 	animated_sprite_2d.play("death")
+	get_parent().apply_shake(DEATH_HIT_STRENGTH)
 	if animated_sprite_2d.animation_finished:
 		get_parent().game_over()
 	pass
+
+func hit_flash(hit_effect):
+	animated_sprite_2d.material.set_shader_parameter("hit_effect", hit_effect)
 
 func _on_timer_recover_timeout() -> void:
 	recover()
