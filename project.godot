@@ -18,6 +18,7 @@ config/icon="res://assets/prototype/icon.svg"
 [autoload]
 
 Global="*res://scripts/global.gd"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
