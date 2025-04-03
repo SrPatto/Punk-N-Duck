@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhyj30fyf5qxt"]
+[gd_scene load_steps=26 format=3 uid="uid://bhyj30fyf5qxt"]
 
 [ext_resource type="PackedScene" uid="uid://co0gsp45db47q" path="res://scenes/ground.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://doqscv4apgb0u" path="res://scripts/level.gd" id="1_sugp2"]
@@ -11,11 +11,57 @@
 [ext_resource type="PackedScene" uid="uid://pchatj6emxr2" path="res://scenes/modules/module_4.tscn" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://dmhmhas560yrj" path="res://scenes/modules/module_5.tscn" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dldg1bk1e8cf6" path="res://scenes/enemy_spawner.tscn" id="10_eb6dy"]
+[ext_resource type="Script" uid="uid://boeiaynsj1klf" path="res://scripts/module.gd" id="11_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://ckg2ku4hmi4ya" path="res://scenes/background.tscn" id="11_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://ccus2mqht7h30" path="res://assets/sprites/player/Vestidor.png" id="12_0ld40"]
+[ext_resource type="Texture2D" uid="uid://blybuat7ydk1k" path="res://assets/Background/escenario_vestidor.png" id="13_0ld40"]
 [ext_resource type="PackedScene" uid="uid://bg71jf644117w" path="res://scenes/hud.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://b4nlhw31ow2fy" path="res://scenes/music.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bch2sh4mmt5hq" path="res://scenes/game_over.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cgur7ub6weuhh" path="res://scenes/visual_obstacles.tscn" id="16_jbj1t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
+atlas = ExtResource("12_0ld40")
+region = Rect2(0, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc10j"]
+atlas = ExtResource("12_0ld40")
+region = Rect2(224, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jscy8"]
+atlas = ExtResource("12_0ld40")
+region = Rect2(448, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm3ni"]
+atlas = ExtResource("12_0ld40")
+region = Rect2(672, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6deb"]
+atlas = ExtResource("12_0ld40")
+region = Rect2(896, 0, 224, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_og1vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqmmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc10j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jscy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm3ni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6deb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Main" type="Node2D"]
 z_index = 2
@@ -27,11 +73,24 @@ z_index = 10
 [node name="EnemySpawner" parent="." instance=ExtResource("10_eb6dy")]
 
 [node name="Player" parent="." instance=ExtResource("2_sugp2")]
-position = Vector2(-4, 110)
+position = Vector2(0, 102)
 
 [node name="Level" type="Node2D" parent="."]
 script = ExtResource("1_sugp2")
 modules = Array[PackedScene]([ExtResource("2_tefeu"), ExtResource("2_jyhfs"), ExtResource("3_tbgi4"), ExtResource("5_85g3d"), ExtResource("6_choun"), ExtResource("7_ya4ey")])
+
+[node name="Spawn" type="Node2D" parent="Level"]
+script = ExtResource("11_dp3eg")
+
+[node name="Background" type="Sprite2D" parent="Level/Spawn"]
+texture_filter = 1
+position = Vector2(-137, -22)
+texture = ExtResource("13_0ld40")
+
+[node name="Dresser" type="AnimatedSprite2D" parent="Level/Spawn"]
+texture_filter = 1
+position = Vector2(0, 78)
+sprite_frames = SubResource("SpriteFrames_og1vs")
 
 [node name="Background" parent="." instance=ExtResource("11_ya4ey")]
 
@@ -40,7 +99,7 @@ position = Vector2(0, -212)
 rotation = -3.14159
 
 [node name="Ground" parent="." instance=ExtResource("1_0wfyh")]
-position = Vector2(0, 194.5)
+position = Vector2(0, 190)
 
 [node name="Visual_Obstacles" parent="." instance=ExtResource("16_jbj1t")]
 
@@ -49,3 +108,5 @@ position = Vector2(0, 194.5)
 [node name="HUD" parent="." instance=ExtResource("13_a8y0u")]
 
 [node name="Music" parent="." instance=ExtResource("14_a8y0u")]
+
+[connection signal="animation_finished" from="Level/Spawn/Dresser" to="." method="_on_dresser_animation_finished"]

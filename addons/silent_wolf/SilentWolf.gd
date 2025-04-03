@@ -28,7 +28,7 @@ const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
 #
 var config = {
 	"api_key": "FmKF4gtm0Z2RbUAEU62kZ2OZoYLj4PYOURAPIKEY",
-	"game_id": "rBI2EySFq24WJDe7IFyN36UwyIGGvW5x2bdGomSc",
+	"game_id": "YOUR_SILENTWOLF_GAME_ID",
 	"log_level": 0
 }
 

@@ -16,6 +16,7 @@ var stumble_hits = 0
 
 func _ready():
 	Global.player = self
+	animated_sprite_2d.set_frame_and_progress(0,0)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,18 +26,13 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play("jump")
 	elif get_parent().gameRunning:
 		animated_sprite_2d.play("run")
-		
-	if not get_parent().gameRunning:
-		#todo: idle animation
-		pass
-	else:
 		# Handle jump up.
 		if Input.is_action_just_pressed("jump_up") and is_on_floor():
 			animated_sprite_2d.play("jump")
 			velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
-	
+
 func _process(delta):
 	# Handle jump down.
 	if ray_cast_platform.is_colliding():

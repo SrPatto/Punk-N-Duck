@@ -27,6 +27,10 @@ window/size/viewport_height=360
 window/size/initial_screen=1
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/silent_wolf/plugin.cfg")
+
 [input]
 
 jump_down={

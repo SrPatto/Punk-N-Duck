@@ -1,25 +1,31 @@
-[gd_scene format=3 uid="uid://2wy4d8d5av0l"]
+[gd_scene load_steps=2 format=3 uid="uid://2wy4d8d5av0l"]
+
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="1_jqdn1"]
 
 [node name="ScoreItem" type="Panel"]
-custom_minimum_size = Vector2(500, 50)
+custom_minimum_size = Vector2(300, 50)
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="PlayerName" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(100, 25)
+texture_filter = 1
+custom_minimum_size = Vector2(64, 25)
 layout_mode = 0
-offset_left = 8.0
-offset_right = 359.0
-offset_bottom = 50.0
-theme_override_font_sizes/normal_font_size = 32
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 204.0
+offset_bottom = 44.0
+theme_override_fonts/normal_font = ExtResource("1_jqdn1")
+theme_override_font_sizes/normal_font_size = 40
 text = "1. Godzilla"
 
 [node name="Score" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 359.0
-offset_top = 1.0
-offset_right = 485.0
-offset_bottom = 49.0
-theme_override_font_sizes/font_size = 32
+offset_left = 196.0
+offset_right = 296.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("1_jqdn1")
+theme_override_font_sizes/font_size = 60
 text = "13"
 horizontal_alignment = 2

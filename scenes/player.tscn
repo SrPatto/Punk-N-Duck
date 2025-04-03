@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://btpo27t6jnr41"]
+[gd_scene load_steps=28 format=3 uid="uid://btpo27t6jnr41"]
 
 [ext_resource type="Script" uid="uid://cme4w7ierogvo" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bem3lxirm1r8w" path="res://assets/sprites/player/PersonajeFull.png" id="2_g2els"]
 [ext_resource type="Shader" uid="uid://e10onet4448c" path="res://assets/shaders/shake&flash.gdshader" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dyye7jdmvv5hm" path="res://assets/sprites/player/VestidorPersonaje.png" id="4_dqkch"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
 resource_local_to_scene = true
@@ -72,6 +73,26 @@ region = Rect2(672, 0, 112, 112)
 atlas = ExtResource("2_g2els")
 region = Rect2(784, 0, 112, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(0, 0, 224, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(224, 0, 224, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(448, 0, 224, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(672, 0, 224, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("4_dqkch")
+region = Rect2(896, 0, 224, 112)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3v2ag"]
 animations = [{
 "frames": [{
@@ -138,6 +159,26 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
@@ -152,8 +193,9 @@ z_index = 1
 texture_filter = 1
 material = SubResource("ShaderMaterial_dqkch")
 sprite_frames = SubResource("SpriteFrames_3v2ag")
-animation = &"jump"
-autoplay = "run"
+animation = &"spawn"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 11.974)
