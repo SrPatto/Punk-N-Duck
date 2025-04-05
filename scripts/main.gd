@@ -23,7 +23,8 @@ func _ready() -> void:
 	isGameOver = false
 	Global.speed = 0
 	gameOver_UI.get_node("CanvasLayer").hide()
-	$HUD.get_node("StartLabel").show()
+	$MainMenu.show()
+	#$HUD.get_node("StartLabel").show()
 	gameOver_UI.get_node("CanvasLayer").get_node("HBoxContainer").get_node("RestartButton").pressed.connect(new_game)
 	if Global.high_score != 0:
 		$HUD.get_node("HighScoreLabel").text = "HIGH SCORE: " + str(Global.high_score)
@@ -39,9 +40,10 @@ func _process(delta: float) -> void:
 			if isGameOver:
 				new_game()
 			else:
-				$HUD.get_node("StartLabel").hide()
-				dresser.play("default")
-				Global.player.animated_sprite_2d.play("spawn")
+				if dresser != null:
+					$MainMenu.hide()
+					dresser.play("default")
+					Global.player.animated_sprite_2d.play("spawn")
 	
 	shake_strength = lerp(shake_strength, 0.0, SHAKE_DECAY_RATE * delta)
 	camera_2d.offset = get_random_offset()

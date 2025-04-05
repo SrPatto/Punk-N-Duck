@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bhyj30fyf5qxt"]
+[gd_scene load_steps=27 format=3 uid="uid://bhyj30fyf5qxt"]
 
 [ext_resource type="PackedScene" uid="uid://co0gsp45db47q" path="res://scenes/ground.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://doqscv4apgb0u" path="res://scripts/level.gd" id="1_sugp2"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b4nlhw31ow2fy" path="res://scenes/music.tscn" id="14_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bch2sh4mmt5hq" path="res://scenes/game_over.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cgur7ub6weuhh" path="res://scenes/visual_obstacles.tscn" id="16_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b1885kwwj2xeu" path="res://scenes/UI/main_menu.tscn" id="20_gqmmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
 atlas = ExtResource("12_0ld40")
@@ -108,5 +109,7 @@ position = Vector2(0, 190)
 [node name="HUD" parent="." instance=ExtResource("13_a8y0u")]
 
 [node name="Music" parent="." instance=ExtResource("14_a8y0u")]
+
+[node name="MainMenu" parent="." instance=ExtResource("20_gqmmt")]
 
 [connection signal="animation_finished" from="Level/Spawn/Dresser" to="." method="_on_dresser_animation_finished"]

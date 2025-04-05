@@ -1,0 +1,143 @@
+[gd_scene load_steps=21 format=3 uid="uid://b1885kwwj2xeu"]
+
+[ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_e2p27"]
+[ext_resource type="Texture2D" uid="uid://dwpt8roeal5bp" path="res://assets/prototype/icon.svg" id="1_yonvy"]
+[ext_resource type="Texture2D" uid="uid://s3nsm6j1vxb4" path="res://assets/UI/BotonPlay.png" id="2_5jstl"]
+[ext_resource type="Texture2D" uid="uid://ber5gopf70cln" path="res://assets/UI/ButonLeaderboard.png" id="3_5jstl"]
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="4_tfcbk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngj32"]
+resource_local_to_scene = true
+shader = ExtResource("1_e2p27")
+shader_parameter/curvature = 0.1
+shader_parameter/scanline_intensity = 0.8
+shader_parameter/vignette_strength = 0.2
+shader_parameter/resolution = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfcbk"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5jstl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2p27"]
+texture = SubResource("AtlasTexture_tfcbk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngj32"]
+atlas = ExtResource("2_5jstl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bm8t2"]
+texture = SubResource("AtlasTexture_ngj32")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yonvy"]
+atlas = ExtResource("2_5jstl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jstl"]
+texture = SubResource("AtlasTexture_yonvy")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d4ag"]
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jstl"]
+atlas = ExtResource("3_5jstl")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfcbk"]
+texture = SubResource("AtlasTexture_5jstl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2p27"]
+atlas = ExtResource("3_5jstl")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ngj32"]
+texture = SubResource("AtlasTexture_e2p27")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um6dh"]
+atlas = ExtResource("3_5jstl")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mf7fl"]
+texture = SubResource("AtlasTexture_um6dh")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm8t2"]
+region = Rect2(0, 0, 64, 128)
+
+[node name="MainMenu" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ngj32")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HighScoreLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 46.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_tfcbk")
+theme_override_font_sizes/font_size = 32
+text = "High Score: 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="Menu_Container" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="Title" type="TextureRect" parent="Menu_Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_yonvy")
+
+[node name="Buttons_Container" type="HBoxContainer" parent="Menu_Container"]
+layout_mode = 2
+
+[node name="Play_Button" type="Button" parent="Menu_Container/Buttons_Container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.57
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_e2p27")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bm8t2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5jstl")
+icon = SubResource("AtlasTexture_5d4ag")
+
+[node name="Leaderboard_Button" type="Button" parent="Menu_Container/Buttons_Container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_tfcbk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ngj32")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mf7fl")
+icon = SubResource("AtlasTexture_bm8t2")
+icon_alignment = 1
+
+[node name="StartLabel" type="Label" parent="Menu_Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_tfcbk")
+theme_override_font_sizes/font_size = 64
+text = "PRESS SPACE TO PLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
