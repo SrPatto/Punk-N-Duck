@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 		increase_speed()
 		score += (Global.speed / 300)
 		show_score()
+
 	else:
 		if Input.is_action_pressed("start_game"):
 			if isGameOver:

@@ -106,9 +106,6 @@ position = Vector2(0, 190)
 
 [node name="Visual_Obstacles" parent="." instance=ExtResource("16_jbj1t")]
 
-[node name="Music" parent="." instance=ExtResource("14_a8y0u")]
-volume_db = -10.0
-
 [node name="UI_Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -123,5 +120,7 @@ script = ExtResource("18_yc10j")
 [node name="GameOver_Menu" parent="UI_Control" instance=ExtResource("21_jscy8")]
 
 [node name="Leaderboard" parent="UI_Control" instance=ExtResource("22_jscy8")]
+
+[node name="Music" parent="." instance=ExtResource("14_a8y0u")]
 
 [connection signal="animation_finished" from="Level/Spawn/Dresser" to="." method="_on_dresser_animation_finished"]

@@ -1,0 +1,38 @@
+[gd_resource type="AudioStreamInteractive" load_steps=4 format=3 uid="uid://cmq6a65rke826"]
+
+[ext_resource type="AudioStream" uid="uid://vyu7sgsrt37y" path="res://assets/music/Menú.wav" id="1_s183c"]
+[ext_resource type="AudioStream" uid="uid://bsgr6lhlnckqt" path="res://assets/music/Gameplay.wav" id="2_2rh0e"]
+[ext_resource type="AudioStream" uid="uid://dvhvu0imxpjxo" path="res://assets/music/Rewind.mp3" id="3_vpfbi"]
+
+[resource]
+clip_count = 3
+clip_0/name = &"Menú"
+clip_0/stream = ExtResource("1_s183c")
+clip_0/auto_advance = 0
+clip_1/name = &"Gameplay"
+clip_1/stream = ExtResource("2_2rh0e")
+clip_1/auto_advance = 0
+clip_2/name = &"Rewind"
+clip_2/stream = ExtResource("3_vpfbi")
+clip_2/auto_advance = 1
+clip_2/next_clip = 0
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.5,
+"fade_mode": 1,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 1
+}
+}

@@ -1,44 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4nlhw31ow2fy"]
+[gd_scene load_steps=3 format=3 uid="uid://b4nlhw31ow2fy"]
 
-[ext_resource type="Script" uid="uid://nfqfxk771fwu" path="res://scripts/music.gd" id="1_05ggv"]
-[ext_resource type="AudioStream" uid="uid://vyu7sgsrt37y" path="res://assets/music/Menú.wav" id="1_ibx2e"]
-[ext_resource type="AudioStream" uid="uid://bsgr6lhlnckqt" path="res://assets/music/Gameplay.wav" id="2_qnihg"]
-[ext_resource type="AudioStream" uid="uid://dvhvu0imxpjxo" path="res://assets/music/Rewind.mp3" id="3_ejojg"]
-
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ejojg"]
-clip_count = 3
-clip_0/name = &"Menú"
-clip_0/stream = ExtResource("1_ibx2e")
-clip_0/auto_advance = 0
-clip_1/name = &"Gameplay"
-clip_1/stream = ExtResource("2_qnihg")
-clip_1/auto_advance = 0
-clip_2/name = &"Rewind"
-clip_2/stream = ExtResource("3_ejojg")
-clip_2/auto_advance = 1
-clip_2/next_clip = 0
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 1.5,
-"fade_mode": 1,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(1, 2): {
-"fade_beats": 1.0,
-"fade_mode": 3,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(2, 0): {
-"fade_beats": 1.0,
-"fade_mode": 2,
-"from_time": 0,
-"to_time": 1
-}
-}
+[ext_resource type="AudioStream" uid="uid://cmq6a65rke826" path="res://assets/music/music_InteractiveResource.tres" id="1_05ggv"]
+[ext_resource type="Script" uid="uid://nfqfxk771fwu" path="res://scripts/music.gd" id="2_ibx2e"]
 
 [node name="Music" type="AudioStreamPlayer"]
-stream = SubResource("AudioStreamInteractive_ejojg")
+stream = ExtResource("1_05ggv")
+volume_db = -10.0
 autoplay = true
-script = ExtResource("1_05ggv")
+playback_type = 1
+script = ExtResource("2_ibx2e")
