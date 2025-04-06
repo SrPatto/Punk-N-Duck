@@ -1,9 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://btpo27t6jnr41"]
+[gd_scene load_steps=30 format=3 uid="uid://btpo27t6jnr41"]
 
 [ext_resource type="Script" uid="uid://cme4w7ierogvo" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bem3lxirm1r8w" path="res://assets/sprites/player/PersonajeFull.png" id="2_g2els"]
 [ext_resource type="Shader" uid="uid://e10onet4448c" path="res://assets/shaders/shake&flash.gdshader" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dyye7jdmvv5hm" path="res://assets/sprites/player/VestidorPersonaje.png" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://bh781wmef40oi" path="res://assets/sfx/Salto.mp3" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://c8xk5ukmvenq3" path="res://assets/sfx/Caida.mp3" id="6_tuyoq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
 resource_local_to_scene = true
@@ -213,5 +215,13 @@ collision_mask = 6
 [node name="TimerRecover" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="jump_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qlg0r")
+volume_db = 5.0
+
+[node name="hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tuyoq")
+volume_db = 5.0
 
 [connection signal="timeout" from="TimerRecover" to="." method="_on_timer_recover_timeout"]

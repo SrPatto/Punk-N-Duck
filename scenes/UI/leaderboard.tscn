@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://c0hbvqhspdl1l"]
+
+[ext_resource type="Script" uid="uid://dyin3nn8mruoh" path="res://scripts/UI/leaderboard.gd" id="1_pw5hq"]
+[ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_tlu43"]
+[ext_resource type="Texture2D" uid="uid://dcsi6kxt18nak" path="res://assets/UI/LeaderBoardGeneral.png" id="2_2pweb"]
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="3_pw5hq"]
+[ext_resource type="PackedScene" uid="uid://b2h8ok8yfc7wb" path="res://addons/silent_wolf/Scores/Leaderboard.tscn" id="4_xow71"]
+[ext_resource type="Texture2D" uid="uid://b8e3ditve3xs" path="res://assets/UI/BotonRegresar.png" id="5_2pweb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08gv5"]
+shader = ExtResource("1_tlu43")
+shader_parameter/curvature = 0.2
+shader_parameter/scanline_intensity = 0.8
+shader_parameter/vignette_strength = 0.5
+shader_parameter/resolution = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wwo88"]
+texture = ExtResource("2_2pweb")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5hq"]
+atlas = ExtResource("5_2pweb")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xow71"]
+texture = SubResource("AtlasTexture_pw5hq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08gv5"]
+atlas = ExtResource("5_2pweb")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x60nl"]
+texture = SubResource("AtlasTexture_08gv5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m857"]
+atlas = ExtResource("5_2pweb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pj2h7"]
+texture = SubResource("AtlasTexture_1m857")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhb6s"]
+region = Rect2(0, 0, 128, 128)
+
+[node name="Leaderboard" type="CanvasLayer"]
+script = ExtResource("1_pw5hq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_08gv5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wwo88")
+
+[node name="TitleContainer" type="CenterContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 20.0
+offset_right = 132.0
+offset_bottom = 71.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="TitleContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pw5hq")
+theme_override_font_sizes/font_size = 42
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="Leaderboard" parent="." instance=ExtResource("4_xow71")]
+custom_minimum_size = Vector2(440, 180)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -60.0
+offset_right = 220.0
+offset_bottom = 120.0
+
+[node name="ReturnButton" type="Button" parent="."]
+texture_filter = 1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 138.0
+offset_bottom = 138.0
+scale = Vector2(0.7, 0.7)
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_xow71")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x60nl")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pj2h7")
+icon = SubResource("AtlasTexture_dhb6s")

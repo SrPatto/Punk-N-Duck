@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1cfu1eckdlax"]
+
+[ext_resource type="Script" uid="uid://blyylyphxovpv" path="res://scripts/UI/start_screen.gd" id="1_j642t"]
+[ext_resource type="Texture2D" uid="uid://ctrk6abghjwmy" path="res://assets/UI/IntroducirNombre.png" id="1_p8yv4"]
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="2_j642t"]
+[ext_resource type="Texture2D" uid="uid://s3nsm6j1vxb4" path="res://assets/UI/BotonPlay.png" id="3_jf0fs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fsdyd"]
+texture = ExtResource("1_p8yv4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfcbk"]
+resource_local_to_scene = true
+atlas = ExtResource("3_jf0fs")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4dstf"]
+texture = SubResource("AtlasTexture_tfcbk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngj32"]
+atlas = ExtResource("3_jf0fs")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_livli"]
+texture = SubResource("AtlasTexture_ngj32")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yonvy"]
+atlas = ExtResource("3_jf0fs")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qy2iw"]
+texture = SubResource("AtlasTexture_yonvy")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bygni"]
+region = Rect2(0, 0, 128, 128)
+
+[node name="Start_Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j642t")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.290196, 0.505882, 0.34902, 1)
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fsdyd")
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -46.0
+offset_right = 100.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j642t")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "USERNAME"
+alignment = 1
+emoji_menu_enabled = false
+
+[node name="submit_Button" type="Button" parent="Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.57
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_4dstf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_livli")
+theme_override_styles/normal = SubResource("StyleBoxTexture_qy2iw")
+icon = SubResource("AtlasTexture_bygni")
+
+[node name="noUsername_Label" type="Label" parent="Panel"]
+visible = false
+modulate = Color(0.745098, 0.133333, 0.219608, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = -100.0
+offset_right = 84.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_j642t")
+theme_override_font_sizes/font_size = 32
+text = "NO NAME, NO GAME..."
+
+[connection signal="pressed" from="Panel/submit_Button" to="." method="_on_submit_button_pressed"]

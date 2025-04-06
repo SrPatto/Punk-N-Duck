@@ -10,22 +10,24 @@ config_version=5
 
 [application]
 
-config/name="The Pijama Thief"
-run/main_scene="uid://bhyj30fyf5qxt"
+config/name="Punk'N'Duck"
+run/main_scene="uid://c1cfu1eckdlax"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://assets/prototype/icon.svg"
+boot_splash/bg_color=Color(0.290196, 0.505882, 0.34902, 1)
+config/icon="uid://dq6utifiks4mc"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+SceneTransition="*res://scenes/scene_transition.tscn"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/initial_screen=1
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -62,3 +64,8 @@ start_game={
 2d_physics/layer_6="Ground"
 2d_physics/layer_9="NoPlatformFlag"
 2d_physics/layer_10="PlatformFlag"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

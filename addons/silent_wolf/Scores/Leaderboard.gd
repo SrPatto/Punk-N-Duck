@@ -9,8 +9,10 @@ var list_index = 0
 var ld_name = "main"
 var max_scores = 10
 
-
 func _ready():
+	pass
+
+func load_data():
 	print("SilentWolf.Scores.leaderboards: " + str(SilentWolf.Scores.leaderboards))
 	print("SilentWolf.Scores.ldboard_config: " + str(SilentWolf.Scores.ldboard_config))
 	var scores = SilentWolf.Scores.scores
@@ -28,7 +30,6 @@ func _ready():
 		scores = sw_result.scores
 		hide_message()
 		render_board(scores, local_scores)
-
 
 func render_board(scores: Array, local_scores: Array) -> void:
 	var all_scores = scores
@@ -87,8 +88,8 @@ func score_in_score_array(scores: Array, new_score: Dictionary) -> bool:
 func add_item(player_name: String, score_value: String) -> void:
 	var item = ScoreItem.instantiate()
 	list_index += 1
-	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
-	item.get_node("Score").text = score_value
+	item.get_node("Info_Container").get_node("PlayerName").text = str(list_index) + str(". ") + player_name
+	item.get_node("Info_Container").get_node("Score").text = score_value
 	item.offset_top = list_index * 100
 	$"Board/HighScores/ScoreItemContainer".add_child(item)
 
@@ -113,6 +114,7 @@ func hide_message() -> void:
 
 func clear_leaderboard() -> void:
 	var score_item_container = $"Board/HighScores/ScoreItemContainer"
+	list_index = 0
 	if score_item_container.get_child_count() > 0:
 		var children = score_item_container.get_children()
 		for c in children:
@@ -120,8 +122,8 @@ func clear_leaderboard() -> void:
 			c.queue_free()
 
 
-func _on_CloseButton_pressed() -> void:
-	var scene_name = SilentWolf.scores_config.open_scene_on_close
-	SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
-	#global.reset()
-	get_tree().change_scene_to_file(scene_name)
+#func _on_CloseButton_pressed() -> void:
+	#var scene_name = SilentWolf.scores_config.open_scene_on_close
+	#SWLogger.info("Closing SilentWolf leaderboard, switching to scene: " + str(scene_name))
+	##global.reset()
+	#get_tree().change_scene_to_file(scene_name)

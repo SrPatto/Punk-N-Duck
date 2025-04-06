@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var ray_cast_death_sensor = $RayCast_DeathSensor
 @onready var timer_recover: Timer = $TimerRecover
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var jump_sfx: AudioStreamPlayer = $jump_sfx
+@onready var hit_sfx: AudioStreamPlayer = $hit_sfx
 
 const JUMP_VELOCITY = -700.0
 const INITIAL_POSITION = 0
@@ -28,6 +30,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("run")
 		# Handle jump up.
 		if Input.is_action_just_pressed("jump_up") and is_on_floor():
+			jump_sfx.play()
 			animated_sprite_2d.play("jump")
 			velocity.y = JUMP_VELOCITY
 	
@@ -62,6 +65,7 @@ func stumble():
 	if get_parent().gameRunning:
 		if stumble_hits < 2:
 			stumble_hits += 1
+			hit_sfx.play()
 			get_parent().apply_shake(STUMBLE_HIT_STRENGTH)
 			hit_flash(1)
 			var tween = create_tween()
@@ -80,6 +84,7 @@ func stumble():
 func death():
 	animated_sprite_2d.play("death")
 	get_parent().apply_shake(DEATH_HIT_STRENGTH)
+	get_parent().get_node("Music").music.switch_to_clip(2)
 	if animated_sprite_2d.animation_finished:
 		get_parent().game_over()
 	pass

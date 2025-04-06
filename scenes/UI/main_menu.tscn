@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1885kwwj2xeu"]
+[gd_scene load_steps=22 format=3 uid="uid://b1885kwwj2xeu"]
 
 [ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_e2p27"]
-[ext_resource type="Texture2D" uid="uid://dwpt8roeal5bp" path="res://assets/prototype/icon.svg" id="1_yonvy"]
+[ext_resource type="Script" uid="uid://1oxa0ykycm3j" path="res://scripts/UI/main_menu.gd" id="1_ngj32"]
 [ext_resource type="Texture2D" uid="uid://s3nsm6j1vxb4" path="res://assets/UI/BotonPlay.png" id="2_5jstl"]
 [ext_resource type="Texture2D" uid="uid://ber5gopf70cln" path="res://assets/UI/ButonLeaderboard.png" id="3_5jstl"]
+[ext_resource type="Texture2D" uid="uid://dq6utifiks4mc" path="res://assets/UI/logo.png" id="4_ngj32"]
 [ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="4_tfcbk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ngj32"]
@@ -13,31 +14,6 @@ shader_parameter/curvature = 0.1
 shader_parameter/scanline_intensity = 0.8
 shader_parameter/vignette_strength = 0.2
 shader_parameter/resolution = Vector2(0, 0)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tfcbk"]
-resource_local_to_scene = true
-atlas = ExtResource("2_5jstl")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2p27"]
-texture = SubResource("AtlasTexture_tfcbk")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ngj32"]
-atlas = ExtResource("2_5jstl")
-region = Rect2(256, 0, 128, 128)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bm8t2"]
-texture = SubResource("AtlasTexture_ngj32")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yonvy"]
-atlas = ExtResource("2_5jstl")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jstl"]
-texture = SubResource("AtlasTexture_yonvy")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5d4ag"]
-region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jstl"]
 atlas = ExtResource("3_5jstl")
@@ -63,7 +39,33 @@ texture = SubResource("AtlasTexture_um6dh")
 [sub_resource type="AtlasTexture" id="AtlasTexture_bm8t2"]
 region = Rect2(0, 0, 64, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngj32"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5jstl")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e2p27"]
+texture = SubResource("AtlasTexture_ngj32")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf7fl"]
+atlas = ExtResource("2_5jstl")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bm8t2"]
+texture = SubResource("AtlasTexture_mf7fl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6l81"]
+atlas = ExtResource("2_5jstl")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jstl"]
+texture = SubResource("AtlasTexture_d6l81")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d4ag"]
+region = Rect2(0, 0, 128, 128)
+
 [node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_ngj32")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_ngj32")
@@ -74,6 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HighScoreLabel" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -103,18 +106,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="Title" type="TextureRect" parent="Menu_Container"]
+[node name="Logo" type="TextureRect" parent="Menu_Container"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("1_yonvy")
+texture = ExtResource("4_ngj32")
+expand_mode = 2
 
 [node name="Buttons_Container" type="HBoxContainer" parent="Menu_Container"]
 layout_mode = 2
 
+[node name="Leaderboard_Button" type="Button" parent="Menu_Container/Buttons_Container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_tfcbk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ngj32")
+theme_override_styles/normal = SubResource("StyleBoxTexture_mf7fl")
+icon = SubResource("AtlasTexture_bm8t2")
+icon_alignment = 1
+
 [node name="Play_Button" type="Button" parent="Menu_Container/Buttons_Container"]
 texture_filter = 1
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.57
 focus_mode = 0
@@ -123,18 +139,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bm8t2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_5jstl")
 icon = SubResource("AtlasTexture_5d4ag")
 
-[node name="Leaderboard_Button" type="Button" parent="Menu_Container/Buttons_Container"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 10
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxTexture_tfcbk")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ngj32")
-theme_override_styles/normal = SubResource("StyleBoxTexture_mf7fl")
-icon = SubResource("AtlasTexture_bm8t2")
-icon_alignment = 1
-
 [node name="StartLabel" type="Label" parent="Menu_Container"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tfcbk")
 theme_override_font_sizes/font_size = 64

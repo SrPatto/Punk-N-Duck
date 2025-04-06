@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bhyj30fyf5qxt"]
+[gd_scene load_steps=29 format=3 uid="uid://bhyj30fyf5qxt"]
 
 [ext_resource type="PackedScene" uid="uid://co0gsp45db47q" path="res://scenes/ground.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://doqscv4apgb0u" path="res://scripts/level.gd" id="1_sugp2"]
@@ -17,9 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://blybuat7ydk1k" path="res://assets/Background/escenario_vestidor.png" id="13_0ld40"]
 [ext_resource type="PackedScene" uid="uid://bg71jf644117w" path="res://scenes/hud.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://b4nlhw31ow2fy" path="res://scenes/music.tscn" id="14_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://bch2sh4mmt5hq" path="res://scenes/game_over.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://cgur7ub6weuhh" path="res://scenes/visual_obstacles.tscn" id="16_jbj1t"]
+[ext_resource type="Script" uid="uid://uhfk8i4mdd0f" path="res://scripts/UI/ui_control.gd" id="18_yc10j"]
 [ext_resource type="PackedScene" uid="uid://b1885kwwj2xeu" path="res://scenes/UI/main_menu.tscn" id="20_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://cuudni6j52jrw" path="res://scenes/UI/game_over_menu.tscn" id="21_jscy8"]
+[ext_resource type="PackedScene" uid="uid://c0hbvqhspdl1l" path="res://scenes/UI/leaderboard.tscn" id="22_jscy8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqmmt"]
 atlas = ExtResource("12_0ld40")
@@ -104,12 +106,22 @@ position = Vector2(0, 190)
 
 [node name="Visual_Obstacles" parent="." instance=ExtResource("16_jbj1t")]
 
-[node name="GameOver" parent="." instance=ExtResource("14_jkv2x")]
-
-[node name="HUD" parent="." instance=ExtResource("13_a8y0u")]
-
 [node name="Music" parent="." instance=ExtResource("14_a8y0u")]
+volume_db = -10.0
 
-[node name="MainMenu" parent="." instance=ExtResource("20_gqmmt")]
+[node name="UI_Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("18_yc10j")
+
+[node name="HUD" parent="UI_Control" instance=ExtResource("13_a8y0u")]
+
+[node name="MainMenu" parent="UI_Control" instance=ExtResource("20_gqmmt")]
+
+[node name="GameOver_Menu" parent="UI_Control" instance=ExtResource("21_jscy8")]
+
+[node name="Leaderboard" parent="UI_Control" instance=ExtResource("22_jscy8")]
 
 [connection signal="animation_finished" from="Level/Spawn/Dresser" to="." method="_on_dresser_animation_finished"]

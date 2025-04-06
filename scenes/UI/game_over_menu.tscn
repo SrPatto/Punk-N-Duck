@@ -1,0 +1,144 @@
+[gd_scene load_steps=16 format=3 uid="uid://cuudni6j52jrw"]
+
+[ext_resource type="Script" uid="uid://bynqggkxt6g8p" path="res://scripts/UI/game_over_menu.gd" id="1_ak6qf"]
+[ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_q31e6"]
+[ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="2_voo7t"]
+[ext_resource type="PackedScene" uid="uid://b2h8ok8yfc7wb" path="res://addons/silent_wolf/Scores/Leaderboard.tscn" id="3_ak6qf"]
+[ext_resource type="Texture2D" uid="uid://b57x1p8h0r4qa" path="res://assets/UI/BotonRestart.png" id="3_voo7t"]
+[ext_resource type="Texture2D" uid="uid://di4g4u5b8ciop" path="res://assets/UI/LeaderBoardGameOver.png" id="5_aot2e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbwuq"]
+shader = ExtResource("1_q31e6")
+shader_parameter/curvature = 0.2
+shader_parameter/scanline_intensity = 0.8
+shader_parameter/vignette_strength = 0.5
+shader_parameter/resolution = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak6qf"]
+atlas = ExtResource("3_voo7t")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aot2e"]
+texture = SubResource("AtlasTexture_ak6qf")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbx14"]
+atlas = ExtResource("3_voo7t")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftfj0"]
+texture = SubResource("AtlasTexture_wbx14")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x31du"]
+atlas = ExtResource("3_voo7t")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jt55n"]
+texture = SubResource("AtlasTexture_x31du")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkiet"]
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbx14"]
+texture = ExtResource("5_aot2e")
+
+[node name="GameOver_Menu" type="CanvasLayer"]
+script = ExtResource("1_ak6qf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_tbwuq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main_Container" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Left_Container" type="VBoxContainer" parent="Main_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title_Label" type="Label" parent="Main_Container/Left_Container"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_voo7t")
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="GameInfo_Container" type="VBoxContainer" parent="Main_Container/Left_Container"]
+layout_mode = 2
+
+[node name="Score_Label" type="Label" parent="Main_Container/Left_Container/GameInfo_Container"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_voo7t")
+theme_override_font_sizes/font_size = 32
+text = "SCORE: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScore_Label" type="Label" parent="Main_Container/Left_Container/GameInfo_Container"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_voo7t")
+theme_override_font_sizes/font_size = 32
+text = "High Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RestartButton" type="Button" parent="Main_Container/Left_Container"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_aot2e")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ftfj0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_jt55n")
+icon = SubResource("AtlasTexture_xkiet")
+
+[node name="Panel" type="Panel" parent="Main_Container"]
+texture_filter = 1
+custom_minimum_size = Vector2(296, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbx14")
+
+[node name="TitleContainer" type="CenterContainer" parent="Main_Container/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = 32.0
+offset_right = 84.0
+offset_bottom = 58.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Main_Container/Panel/TitleContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_voo7t")
+theme_override_font_sizes/font_size = 32
+text = "Leaderboard"
+horizontal_alignment = 1
+
+[node name="Leaderboard" parent="Main_Container/Panel" instance=ExtResource("3_ak6qf")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 70.0
+offset_right = -16.0
+offset_bottom = -50.0
+size_flags_vertical = 4

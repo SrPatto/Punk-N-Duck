@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://chvf3s7mkyumg"]
+[gd_scene load_steps=27 format=3 uid="uid://chvf3s7mkyumg"]
 
 [ext_resource type="Script" uid="uid://dmmj3ngwc2nav" path="res://scripts/obstacle.gd" id="1_drdry"]
 [ext_resource type="Texture2D" uid="uid://knvio2q1s018" path="res://assets/sprites/obstacles/ObstaculoA.png" id="2_drdry"]
 [ext_resource type="Texture2D" uid="uid://uwwionto7o4u" path="res://assets/sprites/obstacles/ObstaculoB.png" id="3_sh7k1"]
 [ext_resource type="Texture2D" uid="uid://smwa6eqhpas0" path="res://assets/sprites/obstacles/ObstaculoC.png" id="4_i4xvc"]
+[ext_resource type="AudioStream" uid="uid://bad5easkcirb0" path="res://assets/sfx/CajaFx.mp3" id="5_i4xvc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4pg3"]
 atlas = ExtResource("2_drdry")
@@ -193,3 +194,7 @@ animation = &"destroy_C"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -2)
 shape = SubResource("RectangleShape2D_drdry")
+
+[node name="BoxDestroy_SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i4xvc")
+volume_db = 5.0
