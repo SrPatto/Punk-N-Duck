@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1885kwwj2xeu"]
+[gd_scene load_steps=23 format=3 uid="uid://b1885kwwj2xeu"]
 
 [ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_e2p27"]
 [ext_resource type="Script" uid="uid://1oxa0ykycm3j" path="res://scripts/UI/main_menu.gd" id="1_ngj32"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ber5gopf70cln" path="res://assets/UI/ButonLeaderboard.png" id="3_5jstl"]
 [ext_resource type="Texture2D" uid="uid://dq6utifiks4mc" path="res://assets/UI/logo.png" id="4_ngj32"]
 [ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="4_tfcbk"]
+[ext_resource type="Texture2D" uid="uid://wwjfax136scc" path="res://assets/UI/Botones.png" id="7_bm8t2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ngj32"]
 resource_local_to_scene = true
@@ -75,6 +76,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Controls" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 20.0
+offset_right = 212.0
+offset_bottom = 140.0
+texture = ExtResource("7_bm8t2")
+
 [node name="HighScoreLabel" type="Label" parent="."]
 texture_filter = 1
 anchors_preset = 1
@@ -140,10 +148,11 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_5jstl")
 icon = SubResource("AtlasTexture_5d4ag")
 
 [node name="StartLabel" type="Label" parent="Menu_Container"]
+visible = false
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_tfcbk")
 theme_override_font_sizes/font_size = 64
-text = "PRESS SPACE TO PLAY"
+text = "PRESIONA SPACE PARA JUGAR"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -12,5 +12,6 @@ func change_scene(target: String):
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(target)
 	animation_player.play_backwards("dissolve")
-	transitioned.emit()
+	await animation_player.animation_finished
 	visible = false
+	transitioned.emit()
