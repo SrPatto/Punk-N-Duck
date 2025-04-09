@@ -24,19 +24,19 @@ region = Rect2(128, 0, 128, 128)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xow71"]
 texture = SubResource("AtlasTexture_pw5hq")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_08gv5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_xow71"]
 atlas = ExtResource("5_2pweb")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x60nl"]
-texture = SubResource("AtlasTexture_08gv5")
+texture = SubResource("AtlasTexture_xow71")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1m857"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_08gv5"]
 atlas = ExtResource("5_2pweb")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pj2h7"]
-texture = SubResource("AtlasTexture_1m857")
+texture = SubResource("AtlasTexture_08gv5")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhb6s"]
 region = Rect2(0, 0, 128, 128)

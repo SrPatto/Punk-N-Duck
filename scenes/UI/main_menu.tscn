@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1885kwwj2xeu"]
+[gd_scene load_steps=31 format=3 uid="uid://b1885kwwj2xeu"]
 
 [ext_resource type="Shader" uid="uid://crcq3tlli7hcy" path="res://assets/shaders/CRT_effect.gdshader" id="1_e2p27"]
 [ext_resource type="Script" uid="uid://1oxa0ykycm3j" path="res://scripts/UI/main_menu.gd" id="1_ngj32"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ber5gopf70cln" path="res://assets/UI/ButonLeaderboard.png" id="3_5jstl"]
 [ext_resource type="Texture2D" uid="uid://dq6utifiks4mc" path="res://assets/UI/logo.png" id="4_ngj32"]
 [ext_resource type="FontFile" uid="uid://cawvly5c6v8b0" path="res://assets/fonts/monogram-extended.ttf" id="4_tfcbk"]
+[ext_resource type="Texture2D" uid="uid://b8e3ditve3xs" path="res://assets/UI/BotonRegresar.png" id="5_5d4ag"]
 [ext_resource type="Texture2D" uid="uid://wwjfax136scc" path="res://assets/UI/Botones.png" id="7_bm8t2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ngj32"]
@@ -63,6 +64,30 @@ region = Rect2(0, 0, 128, 128)
 texture = SubResource("AtlasTexture_d6l81")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d4ag"]
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5hq"]
+atlas = ExtResource("5_5d4ag")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_um6dh"]
+texture = SubResource("AtlasTexture_pw5hq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08gv5"]
+atlas = ExtResource("5_5d4ag")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d6l81"]
+texture = SubResource("AtlasTexture_08gv5")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m857"]
+atlas = ExtResource("5_5d4ag")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a1wsg"]
+texture = SubResource("AtlasTexture_1m857")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7p8e"]
 region = Rect2(0, 0, 128, 128)
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -156,3 +181,19 @@ theme_override_font_sizes/font_size = 64
 text = "PRESIONA SPACE PARA JUGAR"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="."]
+texture_filter = 1
+offset_left = 490.0
+offset_top = 220.0
+offset_right = 618.0
+offset_bottom = 348.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_um6dh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_d6l81")
+theme_override_styles/normal = SubResource("StyleBoxTexture_a1wsg")
+icon = SubResource("AtlasTexture_i7p8e")
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
